@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+
+    <display-name>JSF Web Application</display-name>
+    <context-param>
+        <param-name>javax.faces.PROJECT_STAGE</param-name>
+        <param-value>Development</param-value>
+    </context-param>  
+   
+    <listener>
+        <listener-class>org.apache.myfaces.webapp.StartupServletContextListener</listener-class>
+    </listener>
+    <servlet>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>   
+    <context-param>
+        <description>State saving method: "client" or "server" (= default)
+            See JSF Specification 2.5.3</description>
+        <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+        <param-value>server</param-value>
+    </context-param>
+    <context-param>
+        <description>Only applicable if state saving method is "server" (= default).
+            Defines the amount (default = 20) of the latest views are stored in session.</description>
+        <param-name>org.apache.myfaces.NUMBER_OF_VIEWS_IN_SESSION</param-name>
+        <param-value>20</param-value>
+    </context-param>
+    <context-param>
+        <description>Only applicable if state saving method is "server" (= default).
+            If true (default) the state will be serialized to a byte stream before it 
+            is written to the session.
+            If false the state will not be serialized to a byte stream.</description>
+        <param-name>org.apache.myfaces.SERIALIZE_STATE_IN_SESSION</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <context-param>
+        <description>Only applicable if state saving method is "server" (= default) and if 
+            org.apache.myfaces.SERIALIZE_STATE_IN_SESSION is true (= default)
+            If true (default) the serialized state will be compressed before it 
+            is written to the session. If false the state will not be compressed.</description>
+        <param-name>org.apache.myfaces.COMPRESS_STATE_IN_SESSION</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <context-param>
+        <description>This parameter tells MyFaces if javascript code should be allowed in the
+            rendered HTML output.
+            If javascript is allowed, command_link anchors will have javascript code
+            that submits the corresponding form.
+            If javascript is not allowed, the state saving info and nested parameters
+            will be added as url parameters.
+            Default: "true"</description>
+        <param-name>org.apache.myfaces.ALLOW_JAVASCRIPT</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <context-param>
+        <param-name>org.apache.myfaces.DETECT_JAVASCRIPT</param-name>
+        <param-value>false</param-value>
+    </context-param>
+    <context-param>
+        <description>If true, rendered HTML code will be formatted, so that it is "human readable".
+            i.e. additional line separators and whitespace will be written, that do not
+            influence the HTML code.
+            Default: "true"</description>
+        <param-name>org.apache.myfaces.PRETTY_HTML</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <context-param>
+        <description>If true, a javascript function will be rendered that is able to restore the
+            former vertical scroll on every request. Convenient feature if you have pages
+            with long lists and you do not want the browser page to always jump to the top
+            if you trigger a link or button action that stays on the same page.
+            Default: "false"</description>
+        <param-name>org.apache.myfaces.AUTO_SCROLL</param-name>
+        <param-value>true</param-value>
+    </context-param>
+
+    <context-param>
+        <description>
+            Validate managed beans, navigation rules and ensure that forms are not nested.
+        </description>
+        <param-name>org.apache.myfaces.VALIDATE</param-name>
+        <param-value>false</param-value>
+    </context-param>
+
+    <context-param>
+        <description>A class implementing the
+            org.apache.myfaces.shared.renderkit.html.util.AddResource
+            interface. It is responsible to
+            place scripts and css on the right position in your HTML document.
+            Default: "org.apache.myfaces.shared.renderkit.html.util.DefaultAddResource"
+            Follow the description on the MyFaces-Wiki-Performance page to enable
+            StreamingAddResource instead of DefaultAddResource if you want to
+            gain performance.
+        </description>
+        <param-name>org.apache.myfaces.ADD_RESOURCE_CLASS</param-name>
+        <!-- param-value>org.apache.myfaces.renderkit.html.util.DefaultAddResource</param-value -->
+        <param-value>org.apache.myfaces.renderkit.html.util.NonBufferingAddResource</param-value>
+        <!--param-value>org.apache.myfaces.component.html.util.StreamingAddResource</param-value -->
+    </context-param>
+  
+    <context-param>
+        <param-name>javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <context-param>
+        <param-name>javax.faces.PARTIAL_STATE_SAVING</param-name>
+        <param-value>false</param-value>
+    </context-param>
+    <context-param>
+        <param-name>org.apache.myfaces.USE_MULTIPLE_JS_FILES_FOR_JSF_UNCOMPRESSED_JS</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <context-param>
+        <param-name>facelets.DEVELOPMENT</param-name>
+        <param-value>false</param-value>
+    </context-param>
+
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>*.jsf</url-pattern>
+    </servlet-mapping> 
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>*.xhtml</url-pattern>
+    </servlet-mapping>   
+    <context-param>
+        <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+        <param-value>server</param-value>
+    </context-param>
+    <context-param>
+        <param-name>javax.faces.DEFAULT_SUFFIX</param-name>
+        <param-value>.xhtml</param-value>
+    </context-param>  
+    <!--    <context-param>
+          <param-name>primefaces.THEME</param-name>
+          <param-value>bootstrap</param-value>
+      </context-param>
+    -->
+<!--    <context-param>
+        <param-name>de.larmic.butterfaces.provideJQuery</param-name>
+        <param-value>false</param-value>
+    </context-param>
+    <context-param>
+        <param-name>de.larmic.butterfaces.useCompressedResources</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <context-param>
+        <param-name>de.larmic.butterfaces.provideBootstrap</param-name>
+        <param-value>false</param-value>
+    </context-param>
+    <context-param>
+        <param-name>net.bootsfaces.get_jquery_from_cdn</param-name>
+        <param-value>false</param-value>
+    </context-param>-->
+    
+  
+    <error-page>
+        <error-code>500</error-code>
+        <location>/errorpages/viewexpire.jsp</location>
+    </error-page>
+    <error-page>
+        <exception-type>javax.faces.application.ViewExpiredException</exception-type>
+        <location>/errorpages/viewexpire.jsp</location>
+    </error-page>
+    <error-page>
+        <exception-type>javax.crypto.BadPaddingException</exception-type>
+        <location>/errorpages/viewexpire.jsp</location>
+    </error-page>
+    <error-page>
+        <exception-type>javax.faces.FacesException</exception-type>
+        <location>/errorpages/viewexpire.jsp</location>
+    </error-page>
+    <error-page>
+        <exception-type>java.lang.NullPointerException</exception-type>
+        <location>/errorpages/viewexpire.jsp</location>
+    </error-page>
+    <error-page>
+        <exception-type>com.sun.facelets.FaceletException</exception-type>
+        <location>/errorpages/viewexpire.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/errorpages/viewexpire.jsp</location>
+    </error-page>   
+    <error-page>
+        <exception-type>java.lang.NumberFormatException</exception-type>
+        <location>/errorpages/viewexpire.jsp</location>
+    </error-page>
+    <error-page>
+        <exception-type>javax.faces.convert.ConverterException</exception-type>
+        <location>/errorpages/viewexpire.jsp</location>
+    </error-page>
+    <error-page>
+        <exception-type>com.ocpsoft.pretty.PrettyException</exception-type>
+        <location>/errorpages/viewexpire.jsp</location>
+    </error-page>
+    <error-page>
+        <exception-type>javax.el.PropertyNotFoundException</exception-type>
+        <location>/errorpages/viewexpire.jsp</location>
+    </error-page>
+    <error-page>
+        <exception-type>java.lang.Throwable</exception-type>
+        <location>/errorpages/viewexpire.jsp</location>
+    </error-page>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>No access</web-resource-name>
+            <url-pattern>*.xhtml</url-pattern>
+        </web-resource-collection>
+        <auth-constraint/>
+    </security-constraint>    
+    <session-config>
+        <session-timeout>
+            500
+        </session-timeout>
+    </session-config>     
+    
+    <welcome-file-list>
+        <welcome-file>index.jsf</welcome-file>
+    </welcome-file-list>  
+
+</web-app>
